@@ -1,6 +1,8 @@
 # Old-Pizza
 Order pizza from old devices like a wii
 
+I AM STRUGLING TO FIND A HTTP HOST SO PLEASE JUST BARE WITH ME
+
 Works in all places which have a Dominos (Will NOT Work in the middle of nowhere LOL)
 
 Your order and adress WILL go strait to Dominos
