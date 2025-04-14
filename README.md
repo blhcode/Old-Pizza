@@ -1,7 +1,17 @@
 # Old-Pizza
 Order pizza from old devices like a wii
 
-Works in all countries which havge a Dominos
+Works in all places which have a Dominos (Will NOT Work in the middle of nowhere LOL)
+
+Your order and adress WILL go strait to Dominos
+
+I am not responsible for wrong orders
+
+At this point in time yuou can ONLY order a chewese pizza
+
+The website to order from is linked below:
+
+https://oldpizza.neocities.org/
 
 Credit to node-dominos-pizza-api by 
 
