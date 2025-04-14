@@ -5,9 +5,11 @@ Works in all places which have a Dominos (Will NOT Work in the middle of nowhere
 
 Your order and adress WILL go strait to Dominos
 
-I am not responsible for wrong orders
+I am NOT responsible for orders
 
-At this point in time yuou can ONLY order a chewese pizza
+Payment is CASH ONLY
+
+At this point in time you can ONLY order a chewese pizza
 
 The website to order from is linked below:
 
