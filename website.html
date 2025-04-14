@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Cheese Pizza</title>
+    <script type="module">
+        import { Order, Customer, Item, NearbyStores } from 'dominos';
+
+        async function placeOrder() {
+            // Cheese pizza item definition
+            const pizza = new Item({
+                code: '12SCREEN', // 12-inch thin crust cheese pizza
+                options: {
+                    C: { '1/1': '2' } // Cheese, whole pizza: double
+                }
+            });
+
+            // Customer details
+            const customer = new Customer({
+                address: document.getElementById('address').value,
+                firstName: document.getElementById('firstName').value,
+                lastName: document.getElementById('lastName').value,
+                phone: document.getElementById('phone').value,
+                email: document.getElementById('email').value
+            });
+
+            let storeID = 0;
+            let distance = 100;
+
+            // Find nearest store
+            const nearbyStores = await new NearbyStores(customer.address);
+
+            for (const store of nearbyStores.stores) {
+                if (
+                    store.IsOnlineCapable &&
+                    store.IsDeliveryStore &&
+                    store.IsOpen &&
+                    store.ServiceIsOpen.Delivery &&
+                    store.MinDistance < distance
+                ) {
+                    distance = store.MinDistance;
+                    storeID = store.StoreID;
+                }
+            }
+
+            if (storeID == 0) {
+                alert('No open stores nearby!');
+                throw ReferenceError('No Open Stores');
+            }
+
+            const order = new Order(customer);
+            order.storeID = storeID;
+            order.addItem(pizza);
+
+            // Validate and price the order
+            await order.validate();
+            await order.price();
+
+            // Add cash payment method (no card details)
+            order.payments.push({
+                type: 'Cash',
+                amount: order.amountsBreakdown.customer
+            });
+
+            try {
+                // Place the order
+                await order.place();
+                alert('Order placed successfully!');
+            } catch (err) {
+                console.error(err);
+                alert('Failed to place order. Please try again.');
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>Order Cheese Pizza</h1>
+    <form onsubmit="placeOrder(); return false;">
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" required><br>
+
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" required><br>
+
+        <label for="address">Address:</label>
+        <input type="text" id="address" required><br>
+
+        <label for="phone">Phone:</label>
+        <input type="tel" id="phone" required><br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" required><br>
+
+        <button type="submit">Place Order</button>
+    </form>
+</body>
+</html>
