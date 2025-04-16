@@ -13,7 +13,7 @@ I am NOT responsible for orders
 
 Payment is CASH ONLY
 
-At this point in time you can ONLY order a chewese pizza
+At this point in time you can ONLY order a cheese pizza
 
 The website to order from is linked below:
 
